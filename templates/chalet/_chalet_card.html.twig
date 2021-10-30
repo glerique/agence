@@ -1,0 +1,15 @@
+{% set url = path('chalets_show', {'slug': chalet.slug}) %}
+<div class="col-md-4 mb-4">
+	<div class="card"><img src="/uploads/{{ chalet.coverImage}}" class="img-fluid" alt=""></div>
+	<div class="card-body">
+		<h4 class="card-title">{{chalet.name}}</h4>
+		<p class="card-text">{{chalet.description | u.truncate(150)}}
+			...</p>
+		<p>
+			{{ chalet.price }}
+			€ la semaine
+		</p>
+		<a href="{{ url }}" class="btn btn-primary btn-sm">Détails</a>
+		<a href="#" class="btn btn-success btn-sm">Réserver</a>
+	</div>
+</div>

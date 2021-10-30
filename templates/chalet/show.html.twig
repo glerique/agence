@@ -1,0 +1,72 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	{{chalet.name}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row justify-content-center ">
+			<div class="col-md-10 col-md-offset-1  mb-4">
+				<div class="card mt-3">
+					<img class="card-img-top" src="{{ asset('uploads/' ~ chalet.coverImage) }}" alt="{{ chalet.name }}">
+
+					<div class="card-body">
+						<h4 class="card-title">
+							<strong>{{ chalet.name }}</strong>
+						</h4>
+						<hr>
+						<h5 class="card-title">Description</h5>
+						<p class="card-text text-justify">{{ chalet.description }}</p>
+						<hr>
+						<h5 class="card-title">Caractéristiques</h5>
+						<ul>
+							<li>Nombre de Chambres :
+								{{chalet.bedrooms}}</li>
+							<li>Nombre de salles de baim :
+								{{chalet.bathrooms}}</li>
+						</ul>
+						<hr>
+						<h5 class="card-title">Prix</h5>
+						{{ chalet.price }}
+						€
+																								la semaine
+						<hr>
+						<h5 class="card-title">Le chalet en image</h5>
+						<div class="col-md-6">
+							<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+								<div class="carousel-indicators">
+									{% for picture in chalet.pictures %}
+										<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{loop.index0}}" {% if loop.first %} class="active" {% endif %} aria-current="true" aria-label="Slide 1"></button>
+									{% endfor %}
+
+
+								</div>
+								<div class="carousel-inner">
+									{% for picture in chalet.pictures %}
+										<div class="carousel-item {% if loop.first %} active  {% endif %}">
+											<img src="{{ asset('uploads/' ~ picture.url) }}" class="d-block w-100" alt="{{ picture.caption}}">
+										</div>
+									{% endfor %}
+								</div>
+								<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<p>
+						<a href="{{ path('chalets_index') }}" class="btn btn-primary btn-sm">Retour</a>
+						<a href="#" class="btn btn-success btn-sm">Réserver</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
