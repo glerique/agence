@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos chalets !
+{% endblock %}
+
+{% block body %}
+	<h1 class="mb-3">Voici nos chalets !
+	</h1>
+	<div class="row">
+		{% for chalet in chalets %}
+			{% include "/chalet/_chalet_card.html.twig" %}
+		{% endfor %}
+
+	</div>
+{% endblock %}

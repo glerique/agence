@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	Modifier Le Chalet
+{% endblock %}
+{% form_theme form 'chalet/_collection.html.twig' %}
+{% block body %}
+
+	<div class="container mt-5 mb-5">
+
+		<h1 class="my-5">Modifier le chalet</h1>
+
+
+		{{ form_start(form) }}
+
+		{{ form_widget(form) }}
+
+		<button type="submit" class="btn btn-primary">Modifier le chalet</button>
+
+		{{ form_end(form) }}
+
+
+	</div>
+{% endblock %}
