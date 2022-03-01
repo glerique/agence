@@ -16,10 +16,25 @@
 					<a class="nav-link" href="{{ path('chalets_index')}}">Nos Chalets</a>
 				</li>
 			</ul>
-			<form class="d-flex">
-				<input class="form-control me-sm-2" type="text" placeholder="Search">
-				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-			</form>
-		</div>
+			<ul class="navbar-nav mr-auto">
+				{% if not app.user %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+					</li>
+				{% else %}
+					{% if is_granted('ROLE_ADMIN') %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('chalets_new') }}">Créer un chalet</a>
+						</li>
+					{% endif %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+					</li>
+				{% endif %}
+			</ul>
+		</ul>
 	</div>
-</nav>
+</div></nav>
